@@ -1,0 +1,11 @@
+clc;
+clear all;
+addpath(genpath('..'));
+net = feedforwardnet(30,'traingd');
+net.trainParam.epochs = 10000;
+net.divideParam.trainRatio = 70/100;
+net.divideParam.valRatio = 15/100;
+net.divideParam.testRatio = 15/100;
+net.trainParam.mc = 0.5;
+load('trainingdataNN');
+train(net,trainX',trainY');
